@@ -1,0 +1,47 @@
+name: ✨ Feature Request / Specification Proposal
+description: Propose a new capability or architectural enhancement for the Corvus ecosystem.
+title: "[FEAT]: "
+labels: ["enhancement", "spec-proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        In accordance with **Spec-Driven Development (SDD)**, any feature implementation must be preceded by a formal specification draft or amendment.
+  - type: input
+    id: spec_id
+    attributes:
+      label: Spec ID / Target Document
+      description: Identifier or target path in `specs/` where this feature will be formalized.
+      placeholder: "e.g. specs/memory-ttl.md or SPEC-NEW-CAPABILITY"
+    validations:
+      required: true
+  - type: textarea
+    id: problem_statement
+    attributes:
+      label: Problem & User Need
+      description: What challenge or user limitation does this feature resolve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_specification
+    attributes:
+      label: Formal Specification Draft / Contract
+      description: Describe the state machine, JSON-RPC schema modification, JNI method, or API contract.
+    validations:
+      required: true
+  - type: textarea
+    id: tdd_acceptance_criteria
+    attributes:
+      label: TDD Acceptance Criteria & Test Scenarios
+      description: List the unit/integration tests that will validate this feature before and after coding.
+    validations:
+      required: true
+  - type: checkboxes
+    id: compliance
+    attributes:
+      label: SDD & Architectural Compliance
+      options:
+        - label: "I confirm that no production code will be submitted without an accepted specification in specs/"
+          required: true
+        - label: "I confirm that TDD tests will precede application code changes"
+          required: true

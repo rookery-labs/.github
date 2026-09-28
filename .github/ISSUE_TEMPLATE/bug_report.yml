@@ -1,0 +1,60 @@
+name: 🐞 Bug Report
+description: Report a defect, regression, or deviation from validated specifications.
+title: "[BUG]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting an issue in the Rookery Labs ecosystem. 
+        In accordance with our **Spec-Driven Development (SDD)** rules, all defects must reference an existing specification or identify a spec discrepancy.
+  - type: input
+    id: spec_id
+    attributes:
+      label: Spec ID / Reference Document
+      description: Mandatory reference to the specification file or identifier in specs/ (e.g., `SPEC-SESSION-001`, `specs/routing-cascade.md`).
+      placeholder: "e.g. specs/session-management.md#lifecycle"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of the defect encountered.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction_steps
+    attributes:
+      label: Steps to Reproduce
+      description: Deterministic steps to reproduce the behavior.
+      placeholder: |
+        1. Open Corvus Android on device...
+        2. Navigate to URL...
+        3. Trigger agentic observation...
+        4. Observe behavior...
+    validations:
+      required: true
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: Expected Behavior (Per Spec)
+      description: What should happen according to the referenced SDD contract.
+    validations:
+      required: true
+  - type: textarea
+    id: tdd_test_case
+    attributes:
+      label: TDD Reproducer / Failing Test Case
+      description: Provide the path or snippet of the failing unit/integration test reproducing this bug.
+      placeholder: "tests/orchestrator_test.kt::test_session_reattach_without_reload"
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment & Versions
+      description: Device model, Android API level, Rust/Node/Python version, commit SHA.
+      placeholder: "Pixel 8 Pro, Android 14 (API 34), commit abc1234"
+    validations:
+      required: false
