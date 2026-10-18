@@ -9,6 +9,7 @@
 ---
 
 ### 2. Test-Driven Development (TDD Verification)
+- [ ] **Branch & Worktree Isolation:** Development was executed in a dedicated branch (`feat/...`, `fix/...`) and isolated worktree; direct commits to `main` are strictly forbidden.
 - [ ] **Red Phase:** Unit tests reproducing the target behavior/contract were authored and confirmed failing prior to implementation.
 - [ ] **Green Phase:** Application code has been implemented and all tests now pass cleanly.
 - [ ] **Edge Cases:** Boundary conditions, timeout scenarios, and error states are covered by automated tests.
@@ -17,6 +18,7 @@
   - [ ] `cargo test` passes (for `laya-onnx-android`)
   - [ ] `pytest` passes (for `corvus-eval-benchmarks`)
   - [ ] `./gradlew test` passes (for `corvus-android`)
+  - [ ] `just check-all` passes with zero linting/compiler warnings
 
 ---
 

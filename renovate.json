@@ -1,0 +1,50 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Rookery Labs Organization Default Renovate Configuration",
+  "extends": [
+    "config:recommended",
+    ":dependencyDashboard",
+    ":semanticCommits",
+    ":semanticCommitTypeAll(chore)",
+    ":automergePatch",
+    ":automergeMinor"
+  ],
+  "timezone": "UTC",
+  "prConcurrentLimit": 10,
+  "prHourlyLimit": 5,
+  "rebaseWhen": "auto",
+  "platformAutomerge": true,
+  "packageRules": [
+    {
+      "description": "Vulnerability and Security Alerts - Priority immediate PR and automerge if tests pass",
+      "matchCategories": ["security"],
+      "labels": ["security", "dependencies"],
+      "prPriority": 10,
+      "automerge": true,
+      "automergeType": "pr",
+      "ignoreTests": false
+    },
+    {
+      "description": "Auto-merge non-breaking patch and minor dependency updates when all tests pass",
+      "matchUpdateTypes": ["patch", "minor"],
+      "automerge": true,
+      "automergeType": "pr",
+      "ignoreTests": false,
+      "labels": ["dependencies", "automerge"]
+    },
+    {
+      "description": "Lockfile maintenance updates",
+      "matchUpdateTypes": ["lockFileMaintenance"],
+      "automerge": true,
+      "automergeType": "pr",
+      "ignoreTests": false,
+      "schedule": ["before 4am on monday"]
+    },
+    {
+      "description": "Major updates require human review and are not auto-merged",
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "labels": ["dependencies", "breaking-change", "needs-review"]
+    }
+  ]
+}
