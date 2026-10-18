@@ -17,6 +17,15 @@ This repository encapsulates the organizational profile, issue templates, pull r
 2. **TDD Quality Gate:**
    - Require that Red tests precede Green implementation.
    - Maintain 100% test pass rates across the multi-repository portfolio.
-3. **Template Maintenance:**
+3. **Branch & Worktree Isolation (Sanctuary of `main`):**
+   - Strictly prohibit direct commits or pushes on `main`.
+   - Require all tasks to be executed in dedicated branches and Git worktrees (`just worktree-add`).
+   - Merge only when tests and static analysis are 100% green.
+4. **Renovate Automated Dependency Security:**
+   - Maintain central Renovate configuration (`renovate.json`) and CI workflows.
+   - Automerge non-breaking security and dependency PRs when all CI tests pass.
+   - Trigger zero-touch release generation on `main`.
+5. **Template Maintenance:**
    - Maintain `.github/ISSUE_TEMPLATE/bug_report.yml` and `feature_request.yml` with mandatory `Spec ID` inputs.
    - Enforce PR checklist in `.github/PULL_REQUEST_TEMPLATE.md`.
+

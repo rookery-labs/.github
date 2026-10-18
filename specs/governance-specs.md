@@ -44,3 +44,36 @@
    - Remote BYOK APIs must enforce streaming and token cost boundaries.
 3. **DOM Security and Privacy:**
    - DOM representations exported by `corvus-dom-extension` must strictly strip scripts, styles, iframes, SVG blobs, and non-accessibility metadata.
+
+---
+
+## 4. Strict Development Isolation & `main` Branch Sanctuary
+
+1. **Mandatory Dedicated Branches & Worktrees:**
+   - All feature developments, bug fixes, or milestones must be implemented in dedicated branches (`feat/<name>`, `fix/<name>`, or `feat/m<id>-<name>`).
+   - Isolated Git worktrees (`.worktrees/` or `just worktree-add <repo> <branch>`) are mandatory to ensure complete decoupling from other active tasks.
+   - Direct editing, committing, or pushing to `main` is strictly prohibited.
+2. **Sanctuary of `main`:**
+   - The `main` branch is an inviolable sanctuary that must remain permanently compilable, clean, fully tested, and deployable.
+   - Direct push to `main` is strictly forbidden across all repositories.
+3. **Strict Merge Gate:**
+   - Merging into `main` is permitted ONLY when:
+     - Specifications in `specs/` are fully satisfied and updated.
+     - 100% of unit and integration test suites pass with zero regressions.
+     - Static analysis (Clippy, Ruff, TypeScript compiler, Gradle checks) completes with zero warnings or errors.
+     - Pull requests are reviewed and approved.
+
+---
+
+## 5. Automated Renovate Dependency Security & Zero-Touch Releases
+
+1. **Renovate Dependency Security Engine:**
+   - Renovate scans all dependencies across tech stacks (npm, Cargo, PyPI, Gradle) on a continuous automated schedule.
+   - Vulnerability alerts and patch/minor updates are generated immediately with automated PRs.
+2. **Automated Merging Policy (Automerge):**
+   - If and only if all automated CI tests and security quality gates pass with zero regressions, Renovate PRs are automatically merged into `main` without requiring human intervention.
+   - Major version bumps or breaking changes require formal spec review and manual approval.
+3. **Zero-Touch Automated Releases:**
+   - Every merge into `main` triggers automated version analysis, semantic tagging (`vX.Y.Z`), changelog generation, and GitHub Release publication.
+   - Maximized automated test coverage across all subprojects prevents regression releases.
+
